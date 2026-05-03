@@ -42,7 +42,7 @@ export default function Register() {
     <main className="auth-page">
       <form className="auth-card" onSubmit={handleSubmit}>
         <div>
-          <p className="brand auth-brand">TaskFlow</p>
+          <p className="brand auth-brand">Task Manager</p>
           <h1>Register</h1>
           <p className="muted">Create a user for the Spring Boot backend.</p>
         </div>
