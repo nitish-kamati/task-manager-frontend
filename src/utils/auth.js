@@ -1,0 +1,65 @@
+const TOKEN_KEY = "task_manager_token";
+const ROLE_KEY = "task_manager_role";
+
+export function getToken() {
+  return localStorage.getItem(TOKEN_KEY);
+}
+
+export function getRole() {
+  return localStorage.getItem(ROLE_KEY);
+}
+
+export function isAuthenticated() {
+  return Boolean(getToken());
+}
+
+export function saveAuth({ token, role }) {
+  localStorage.setItem(TOKEN_KEY, token);
+  localStorage.setItem(ROLE_KEY, normalizeRole(role));
+}
+
+export function clearAuth() {
+  localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(ROLE_KEY);
+}
+
+export function normalizeRole(role) {
+  return String(role || "").replace("ROLE_", "").toUpperCase();
+}
+
+export function getDashboardPath(role) {
+  const normalizedRole = normalizeRole(role);
+
+  if (normalizedRole === "ADMIN") return "/admin";
+  if (normalizedRole === "MANAGER") return "/manager";
+  if (normalizedRole === "EMPLOYEE") return "/employee";
+
+  return "/login";
+}
+
+export function decodeJwtPayload(token) {
+  try {
+    const base64Payload = token.split(".")[1];
+    const payload = atob(base64Payload.replace(/-/g, "+").replace(/_/g, "/"));
+    return JSON.parse(decodeURIComponent(escape(payload)));
+  } catch {
+    return {};
+  }
+}
+
+export function extractAuthData(apiResponse) {
+  const data = apiResponse?.data || apiResponse || {};
+  const token = data.token || data.jwt || data.accessToken;
+  const decoded = token ? decodeJwtPayload(token) : {};
+  const role =
+    data.role ||
+    data.user?.role ||
+    decoded.role ||
+    decoded.authorities?.[0]?.authority ||
+    decoded.roles?.[0];
+
+  return {
+    token,
+    role: normalizeRole(role)
+  };
+}
