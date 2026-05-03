@@ -1,19 +1,46 @@
 import api from "./axiosInstance.js";
 
 export const adminTaskApi = {
-  getTasks: async () => (await api.get("/admin/tasks")).data,
-  createTask: async (payload) => (await api.post("/admin/task/create", payload)).data,
-  updateTask: async (id, payload) => (await api.put(`/admin/task/${id}`, payload)).data,
-  deleteTask: async (id) => (await api.delete(`/admin/task/${id}`)).data
+  getTasks: async () => {
+    const response = await api.get("/admin/tasks");
+    return response.data;
+  },
+  createTask: async (payload) => {
+    const response = await api.post("/admin/task/create", payload);
+    return response.data;
+  },
+  updateTask: async (id, payload) => {
+    const response = await api.put(`/admin/task/${id}`, payload);
+    return response.data;
+  },
+  deleteTask: async (id) => {
+    const response = await api.delete(`/admin/task/${id}`);
+    return response.data;
+  }
 };
 
 export const managerTaskApi = {
-  getTasks: async () => (await api.get("/manager/tasks")).data,
-  createTask: async (payload) => (await api.post("/manager/task/create", payload)).data,
-  deleteTask: async (id) => (await api.delete(`/manager/task/${id}`)).data
+  getTasks: async () => {
+    const response = await api.get("/manager/tasks");
+    return response.data;
+  },
+  createTask: async (payload) => {
+    const response = await api.post("/manager/task/create", payload);
+    return response.data;
+  },
+  deleteTask: async (id) => {
+    const response = await api.delete(`/manager/task/${id}`);
+    return response.data;
+  }
 };
 
 export const employeeTaskApi = {
-  getTasks: async () => (await api.get("/employee/tasks")).data,
-  updateTask: async (id, payload) => (await api.put(`/employee/task/${id}`, payload)).data
+  getTasks: async () => {
+    const response = await api.get("/employee/tasks");
+    return response.data;
+  },
+  updateTask: async (id, payload) => {
+    const response = await api.put(`/employee/task/${id}`, payload);
+    return response.data;
+  }
 };

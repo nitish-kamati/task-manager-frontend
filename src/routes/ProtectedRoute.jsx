@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { getDashboardPath, getRole, isAuthenticated, normalizeRole } from "../utils/auth.js";

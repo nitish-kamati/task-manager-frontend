@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../api/authApi.js";
@@ -23,7 +22,6 @@ export default function Login() {
 
     try {
       const response = await loginUser(form);
-
       const { token, role } = extractAuthData(response);
 
       if (!token) {
@@ -31,9 +29,7 @@ export default function Login() {
       }
 
       saveAuth({ token, role });
-
       navigate(getDashboardPath(role), { replace: true });
-
     } catch (err) {
       setError(err.response?.data?.message || err.message || "Login failed.");
     } finally {

@@ -1,7 +1,6 @@
 import api from "./axiosInstance.js";
 
 export async function loginUser(credentials) {
-
   const payload = {
     email: credentials.email,
     password: credentials.password

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../api/authApi.js";
 import Alert from "../components/Alert.jsx";
+import { USER_ROLES } from "../constants/index.js";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export default function Register() {
     name: "",
     email: "",
     password: "",
-    role: "EMPLOYEE"
+    role: USER_ROLES.EMPLOYEE
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -55,7 +56,6 @@ export default function Register() {
           <input name="name" value={form.name} onChange={handleChange} required />
         </label>
 
-
         <label>
           Email
           <input name="email" type="email" value={form.email} onChange={handleChange} autoComplete="email" required />
@@ -76,9 +76,9 @@ export default function Register() {
         <label>
           Role
           <select name="role" value={form.role} onChange={handleChange}>
-            <option value="ADMIN">Admin</option>
-            <option value="MANAGER">Manager</option>
-            <option value="EMPLOYEE">Employee</option>
+            <option value={USER_ROLES.ADMIN}>Admin</option>
+            <option value={USER_ROLES.MANAGER}>Manager</option>
+            <option value={USER_ROLES.EMPLOYEE}>Employee</option>
           </select>
         </label>
 

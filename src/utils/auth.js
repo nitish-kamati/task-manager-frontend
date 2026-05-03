@@ -1,12 +1,11 @@
-const TOKEN_KEY = "task_manager_token";
-const ROLE_KEY = "task_manager_role";
+import { STORAGE_KEYS, DASHBOARD_PATHS, USER_ROLES } from '../constants/index.js';
 
 export function getToken() {
-  return localStorage.getItem(TOKEN_KEY);
+  return localStorage.getItem(STORAGE_KEYS.TOKEN);
 }
 
 export function getRole() {
-  return localStorage.getItem(ROLE_KEY);
+  return localStorage.getItem(STORAGE_KEYS.ROLE);
 }
 
 export function isAuthenticated() {
@@ -14,13 +13,13 @@ export function isAuthenticated() {
 }
 
 export function saveAuth({ token, role }) {
-  localStorage.setItem(TOKEN_KEY, token);
-  localStorage.setItem(ROLE_KEY, normalizeRole(role));
+  localStorage.setItem(STORAGE_KEYS.TOKEN, token);
+  localStorage.setItem(STORAGE_KEYS.ROLE, normalizeRole(role));
 }
 
 export function clearAuth() {
-  localStorage.removeItem(TOKEN_KEY);
-  localStorage.removeItem(ROLE_KEY);
+  localStorage.removeItem(STORAGE_KEYS.TOKEN);
+  localStorage.removeItem(STORAGE_KEYS.ROLE);
 }
 
 export function normalizeRole(role) {
@@ -29,12 +28,7 @@ export function normalizeRole(role) {
 
 export function getDashboardPath(role) {
   const normalizedRole = normalizeRole(role);
-
-  if (normalizedRole === "ADMIN") return "/admin";
-  if (normalizedRole === "MANAGER") return "/manager";
-  if (normalizedRole === "EMPLOYEE") return "/employee";
-
-  return "/login";
+  return DASHBOARD_PATHS[normalizedRole] || "/login";
 }
 
 export function decodeJwtPayload(token) {

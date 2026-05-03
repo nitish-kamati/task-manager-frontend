@@ -1,4 +1,5 @@
 import React from "react";
+import { TASK_STATUS } from "../constants/index.js";
 
 export default function TaskTable({ tasks, role, onEdit, onDelete, onStatusChange }) {
   if (!tasks.length) {
@@ -16,7 +17,6 @@ export default function TaskTable({ tasks, role, onEdit, onDelete, onStatusChang
             <th>Description</th>
             <th>Assigned To</th>
             <th>Status</th>
-
             {showActions && <th>Actions</th>}
           </tr>
         </thead>
@@ -31,22 +31,22 @@ export default function TaskTable({ tasks, role, onEdit, onDelete, onStatusChang
               <td>
                 {role === "EMPLOYEE" ? (
                   <select
-                    value={task.status || "PENDING"}
+                    value={task.status || TASK_STATUS.PENDING}
                     onChange={(event) =>
                       onStatusChange(task, event.target.value)
                     }
                   >
-                    <option value="PENDING">Pending</option>
-                    <option value="IN_PROGRESS">In Progress</option>
-                    <option value="COMPLETED">Completed</option>
+                    <option value={TASK_STATUS.PENDING}>Pending</option>
+                    <option value={TASK_STATUS.IN_PROGRESS}>In Progress</option>
+                    <option value={TASK_STATUS.COMPLETED}>Completed</option>
                   </select>
                 ) : (
                   <span
                     className={`status status-${String(
-                      task.status || "PENDING"
+                      task.status || TASK_STATUS.PENDING
                     ).toLowerCase()}`}
                   >
-                    {task.status || "PENDING"}
+                    {task.status || TASK_STATUS.PENDING}
                   </span>
                 )}
               </td>

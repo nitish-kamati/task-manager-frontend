@@ -1,12 +1,12 @@
 import React from "react";
-
 import { useEffect, useState } from "react";
+import { TASK_STATUS } from "../constants/index.js";
 
 const emptyTask = {
   title: "",
   description: "",
   assignedTo: "",
-  status: "PENDING"
+  status: TASK_STATUS.PENDING
 };
 
 export default function TaskForm({ initialTask, mode = "create", showAssignee = true, onSubmit, onCancel, loading }) {
@@ -44,9 +44,9 @@ export default function TaskForm({ initialTask, mode = "create", showAssignee = 
         <label>
           Status
           <select name="status" value={task.status} onChange={handleChange}>
-            <option value="PENDING">Pending</option>
-            <option value="IN_PROGRESS">In Progress</option>
-            <option value="COMPLETED">Completed</option>
+            <option value={TASK_STATUS.PENDING}>Pending</option>
+            <option value={TASK_STATUS.IN_PROGRESS}>In Progress</option>
+            <option value={TASK_STATUS.COMPLETED}>Completed</option>
           </select>
         </label>
       </div>

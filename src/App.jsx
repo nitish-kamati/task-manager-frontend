@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login.jsx";
@@ -8,6 +7,7 @@ import ManagerDashboard from "./pages/ManagerDashboard.jsx";
 import EmployeeDashboard from "./pages/EmployeeDashboard.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import { getDashboardPath, getRole, isAuthenticated } from "./utils/auth.js";
+import { USER_ROLES } from "./constants/index.js";
 
 function HomeRedirect() {
   if (!isAuthenticated()) {
@@ -27,7 +27,7 @@ export default function App() {
       <Route
         path="/admin"
         element={
-          <ProtectedRoute allowedRoles={["ADMIN"]}>
+          <ProtectedRoute allowedRoles={[USER_ROLES.ADMIN]}>
             <AdminDashboard />
           </ProtectedRoute>
         }
@@ -35,7 +35,7 @@ export default function App() {
       <Route
         path="/manager"
         element={
-          <ProtectedRoute allowedRoles={["MANAGER"]}>
+          <ProtectedRoute allowedRoles={[USER_ROLES.MANAGER]}>
             <ManagerDashboard />
           </ProtectedRoute>
         }
@@ -43,7 +43,7 @@ export default function App() {
       <Route
         path="/employee"
         element={
-          <ProtectedRoute allowedRoles={["EMPLOYEE"]}>
+          <ProtectedRoute allowedRoles={[USER_ROLES.EMPLOYEE]}>
             <EmployeeDashboard />
           </ProtectedRoute>
         }

@@ -1,12 +1,12 @@
 import React from "react";
-
 import { NavLink, useNavigate } from "react-router-dom";
 import { clearAuth, getRole } from "../utils/auth.js";
+import { DASHBOARD_PATHS, USER_ROLES } from "../constants/index.js";
 
-const links = {
-  ADMIN: [{ label: [], path: "/admin" }],
-  MANAGER: [{ label: [], path: "/manager" }],
-  EMPLOYEE: [{ label: [], path: "/employee" }]
+const navigationConfig = {
+  [USER_ROLES.ADMIN]: [{ label: "Dashboard", path: DASHBOARD_PATHS[USER_ROLES.ADMIN] }],
+  [USER_ROLES.MANAGER]: [{ label: "Dashboard", path: DASHBOARD_PATHS[USER_ROLES.MANAGER] }],
+  [USER_ROLES.EMPLOYEE]: [{ label: "Dashboard", path: DASHBOARD_PATHS[USER_ROLES.EMPLOYEE] }]
 };
 
 export default function DashboardLayout({ title, children }) {
@@ -27,7 +27,7 @@ export default function DashboardLayout({ title, children }) {
         </div>
 
         <nav className="nav-list">
-          {(links[role] || []).map((link) => (
+          {(navigationConfig[role] || []).map((link) => (
             <NavLink key={link.path} to={link.path} className="nav-link">
               {link.label}
             </NavLink>
@@ -49,8 +49,8 @@ export default function DashboardLayout({ title, children }) {
         {children}
 
         <footer className="footer">
-    © 2026 Task Manager | Built by Nitish
-  </footer>
+          © 2026 Task Manager | Built by Nitish
+        </footer>
       </main>
     </div>
   );
