@@ -2,7 +2,7 @@ import axios from "axios";
 import { clearAuth, getToken } from "../utils/auth.js";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "https://task-manager-backend-production.vercel.app",
+  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:8080",
   headers: {
     "Content-Type": "application/json"
   }
