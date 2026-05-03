@@ -1,7 +1,9 @@
 import { STORAGE_KEYS, DASHBOARD_PATHS, USER_ROLES } from '../constants/index.js';
 
 export function getToken() {
-  return localStorage.getItem(STORAGE_KEYS.TOKEN);
+  const token = localStorage.getItem(STORAGE_KEYS.TOKEN);
+  console.log('Getting token:', token ? 'exists' : 'missing');
+  return token;
 }
 
 export function getRole() {
@@ -13,8 +15,10 @@ export function isAuthenticated() {
 }
 
 export function saveAuth({ token, role }) {
+  console.log('Saving auth:', { token, role });
   localStorage.setItem(STORAGE_KEYS.TOKEN, token);
   localStorage.setItem(STORAGE_KEYS.ROLE, normalizeRole(role));
+  console.log('Auth saved. Token exists:', !!localStorage.getItem(STORAGE_KEYS.TOKEN));
 }
 
 export function clearAuth() {
@@ -42,15 +46,34 @@ export function decodeJwtPayload(token) {
 }
 
 export function extractAuthData(apiResponse) {
-  const data = apiResponse?.data || apiResponse || {};
+  // Handle different response structures
+  let data = apiResponse;
+  
+  // If response has data property, use that
+  if (apiResponse?.data) {
+    data = apiResponse.data;
+  }
+  
+  // Extract token from various possible locations
   const token = data.token || data.jwt || data.accessToken;
-  const decoded = token ? decodeJwtPayload(token) : {};
-  const role =
-    data.role ||
-    data.user?.role ||
-    decoded.role ||
-    decoded.authorities?.[0]?.authority ||
-    decoded.roles?.[0];
+  
+  // Extract role from various possible locations
+  let role = data.role;
+  
+  // If no role found, try to decode from JWT token
+  if (!role && token) {
+    try {
+      const decoded = decodeJwtPayload(token);
+      role = decoded.role || decoded.authorities?.[0]?.authority || decoded.roles?.[0];
+    } catch (e) {
+      console.warn('Failed to decode JWT token for role extraction');
+    }
+  }
+  
+  // If still no role, default to ADMIN for mock mode
+  if (!role && token && token.includes('mock')) {
+    role = 'ADMIN';
+  }
 
   return {
     token,
