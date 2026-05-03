@@ -2,61 +2,73 @@
 
 A modern React-based task management application with role-based access control.
 
+---
+
 ## 🚀 Environment Setup
 
 ### Local Development
+
 1. Copy `.env.example` to `.env.local`
 2. Set your local backend URL:
+
    ```
    VITE_API_BASE_URL=http://localhost:8080
    ```
 3. Install dependencies:
+
    ```bash
    npm install
    ```
 4. Start development server:
+
    ```bash
    npm run dev
    ```
 
-### Production Deployment
-1. Set environment variables in your hosting platform:
-   ```
-   VITE_API_BASE_URL=https://task-manager-backend-1-8c2v.onrender.com
-   ```
-2. Build for production:
-   ```bash
-   npm run build
-   ```
-3. Deploy the `dist` folder
+---
+
+## 🚧 Deployment Status
+
+> ⚠️ To be deployed
+
+Deployment is currently in progress. The application will be hosted soon.
+
+---
 
 ## 🌍 Environment Variables
 
-The application automatically uses different URLs based on the environment:
+* **Local Development**: `http://localhost:8080`
+* **Production**: Will be configured after deployment
 
-- **Local Development**: Uses `http://localhost:8080` (from `.env.local`)
-- **Production**: Uses `https://task-manager-backend-1-8c2v.onrender.com` (from hosting platform)
+---
 
-## 📱 Live Application
+## 📸 Screenshots
 
-- **Frontend**: https://task-manager-frontend-drab-one.vercel.app
-- **Backend**: https://task-manager-backend-1-8c2v.onrender.com
+![Screenshot 1](./Screenshot%202026-05-04%20032741.png)
+![Screenshot 2](./Screenshot%202026-05-04%20032806.png)
+![Screenshot 3](./Screenshot%202026-05-04%20032820.png)
+
+---
 
 ## 🎯 Features
 
-- Role-based authentication (Admin, Manager, Employee)
-- Task creation, editing, and deletion
-- Real-time task status updates
-- Responsive design
-- Clean and scalable code architecture
+* Role-based authentication (Admin, Manager, Employee)
+* Task creation, editing, and deletion
+* Real-time task status updates
+* Responsive design
+* Clean and scalable code architecture
+
+---
 
 ## 🛠️ Tech Stack
 
-- React 18
-- Vite
-- React Router
-- Axios
-- Tailwind CSS
+* React 18
+* Vite
+* React Router
+* Axios
+* Tailwind CSS
+
+---
 
 ## 📁 Project Structure
 
