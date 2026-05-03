@@ -44,7 +44,7 @@ export default function Register() {
         <div>
           <p className="brand auth-brand">Task Manager</p>
           <h1>Register</h1>
-          <p className="muted">Create a user for the Spring Boot backend.</p>
+          <p className="muted">Create a user.</p>
         </div>
 
         <Alert message={error} type="error" />
