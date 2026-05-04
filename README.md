@@ -47,15 +47,15 @@ Deployment is currently in progress.
 
 ## 📸 Application Screenshots
 
-### 📊 Dashboard
+### 📊 Employee Dashboard - All assigned task
 
 ![Dashboard](project-screenshots/dashboard.png)
 
-### 👑 Admin Dashboard
+### 👑 Admin Dashboard- can see all task created by admin or manager
 
 ![Admin Dashboard](project-screenshots/admin-dashboard.png)
 
-### 📋 Task Management
+### 📋 Task Management- task created by manager and admin to manager will show to  manager 
 
 ![Task](project-screenshots/task.png)
 
