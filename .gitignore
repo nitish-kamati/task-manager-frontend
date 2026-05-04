@@ -3,3 +3,8 @@ dist
 .env
 .env.local
 .env.development
+
+# Backend configuration folders (keep local only)
+backend-config/
+backend-deploy/
+backend-fix/
