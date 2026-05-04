@@ -60,6 +60,46 @@ Deployment is currently in progress. The application will be hosted soon.
 
 ---
 
+## 🔄 Workflow & Role Permissions
+
+### 👑 Admin
+
+* Can create tasks
+* Can delete **any task**
+* Can update task status
+* Has full control over the system
+
+---
+
+### 🧑‍💼 Manager
+
+* Can assign tasks to employees
+* Can create tasks
+* Can update task status
+* Can delete tasks **only within their group**
+* ❗ Cannot delete tasks created/assigned by Admin (even if assigned to them or their employees)
+
+---
+
+### 👨‍💻 Employee
+
+* Can view all assigned tasks
+* Can update task status
+* ❌ Cannot delete any task
+* ❌ Cannot create tasks
+
+---
+
+### ⚙️ Permission Logic (Summary)
+
+* **Admin > Manager > Employee** (Hierarchy-based control)
+* Task deletion is **restricted based on role & ownership**
+* Managers have **limited control**, restricted by Admin authority
+* Employees have **read + update access only**
+
+---
+
+
 ## 🛠️ Tech Stack
 
 * React 18
