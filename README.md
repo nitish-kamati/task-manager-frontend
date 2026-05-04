@@ -1,24 +1,27 @@
-# Task Manager Frontend
+# 🚀 Task Manager Frontend
 
-A modern React-based task management application with role-based access control.
+A modern **React-based task management application** with role-based access control and a clean, responsive UI.
 
 ---
 
 ## 🚀 Environment Setup
 
-### Local Development
+### 🔧 Local Development
 
 1. Copy `.env.example` to `.env.local`
-2. Set your local backend URL:
+
+2. Set your backend URL:
 
    ```
    VITE_API_BASE_URL=http://localhost:8080
    ```
+
 3. Install dependencies:
 
    ```bash
    npm install
    ```
+
 4. Start development server:
 
    ```bash
@@ -31,32 +34,40 @@ A modern React-based task management application with role-based access control.
 
 > ⚠️ To be deployed
 
-Deployment is currently in progress. The application will be hosted soon.
+Deployment is currently in progress.
 
 ---
 
 ## 🌍 Environment Variables
 
-* **Local Development**: `http://localhost:8080`
-* **Production**: Will be configured after deployment
+* **Local Development** → `http://localhost:8080`
+* **Production** → Will be configured after deployment
 
 ---
 
-## 📸 Screenshots
+## 📸 Application Screenshots
 
-![Screenshot 1](./Screenshot%202026-05-04%20032741.png)
-![Screenshot 2](./Screenshot%202026-05-04%20032806.png)
-![Screenshot 3](./Screenshot%202026-05-04%20032820.png)
+### 📊 Dashboard
+
+![Dashboard](project-screenshots/dashboard.png)
+
+### 👑 Admin Dashboard
+
+![Admin Dashboard](project-screenshots/admin-dashboard.png)
+
+### 📋 Task Management
+
+![Task](project-screenshots/task.png)
 
 ---
 
 ## 🎯 Features
 
-* Role-based authentication (Admin, Manager, Employee)
-* Task creation, editing, and deletion
-* Real-time task status updates
-* Responsive design
-* Clean and scalable code architecture
+* Role-based authentication (**Admin, Manager, Employee**)
+* Task creation, update, and deletion
+* Dynamic task status updates
+* Responsive UI with Tailwind CSS
+* Clean and modular component structure
 
 ---
 
@@ -64,41 +75,39 @@ Deployment is currently in progress. The application will be hosted soon.
 
 ### 👑 Admin
 
-* Can create tasks
-* Can delete **any task**
-* Can update task status
-* Has full control over the system
+* Create tasks
+* Delete **any task**
+* Update task status
+* Full system control
 
 ---
 
 ### 🧑‍💼 Manager
 
-* Can assign tasks to employees
-* Can create tasks
-* Can update task status
-* Can delete tasks **only within their group**
-* ❗ Cannot delete tasks created/assigned by Admin (even if assigned to them or their employees)
+* Assign tasks to employees
+* Create tasks
+* Update task status
+* Delete tasks **within their group only**
+* ❗ Cannot delete Admin-created tasks
 
 ---
 
 ### 👨‍💻 Employee
 
-* Can view all assigned tasks
-* Can update task status
-* ❌ Cannot delete any task
-* ❌ Cannot create tasks
+* View assigned tasks
+* Update task status
+* ❌ Cannot create or delete tasks
 
 ---
 
-### ⚙️ Permission Logic (Summary)
+### ⚙️ Permission Logic
 
-* **Admin > Manager > Employee** (Hierarchy-based control)
-* Task deletion is **restricted based on role & ownership**
-* Managers have **limited control**, restricted by Admin authority
+* **Admin > Manager > Employee** (Hierarchy-based access)
+* Deletion is restricted by **role + ownership**
+* Managers have **limited control under Admin**
 * Employees have **read + update access only**
 
 ---
-
 
 ## 🛠️ Tech Stack
 
@@ -115,10 +124,25 @@ Deployment is currently in progress. The application will be hosted soon.
 ```
 src/
 ├── api/           # API layer
-├── components/    # Reusable components
-├── constants/     # Application constants
-├── pages/         # Page components
-├── routes/        # Route protection
-├── utils/         # Utility functions
+├── components/    # Reusable UI components
+├── constants/     # App constants
+├── pages/         # Page-level components
+├── routes/        # Protected routes
+├── utils/         # Helper functions
 └── styles.css     # Global styles
 ```
+
+---
+
+## 📌 Highlights
+
+* Clean UI with proper role-based restrictions
+* Integrated with secure Spring Boot backend
+* Organized folder structure for scalability
+* Production-ready frontend architecture
+
+---
+
+## 👨‍💻 Author
+
+Nitish Kamati
